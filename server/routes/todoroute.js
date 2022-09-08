@@ -33,7 +33,21 @@ router.post('/', (req, res) => {
     })
 })
 
-//deleting
+//deleting TODO: modified
+
+// router.delete('/:id', (req, res) => {
+//   const postId = req.params.id
+//   db.deletePostById(postId)
+//     .then(() => {
+//       res.sendStatus(200) // sets status and sends status
+//       //res.status(200)
+//     })
+
+//     .catch((err) => {
+//       console.error(err.message)
+//       res.status(500).send('Server error') //set status and sends text
+//     })
+// })
 
 //updating item text only
 
