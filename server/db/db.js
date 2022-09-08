@@ -1,5 +1,6 @@
 const connection = require('./connection')
 
+//reading todo list
 function getToDo(db = connection) {
   return db('todo').select()
 }
