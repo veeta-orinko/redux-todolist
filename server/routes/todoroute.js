@@ -1,6 +1,6 @@
 const express = require('express')
 
-const db = require('../db/todo')
+const db = require('../db/db')
 
 const router = express.Router()
 
@@ -33,6 +33,22 @@ router.post('/', (req, res) => {
     })
 })
 
+router.patch('/:id', (req, res) => {
+  const formData = req.body
+  const id = req.params
+  db.updateStatus(id, formData.status)
+    .then(() => {
+      return db.getToDoById(id)
+    })
+    .then((obj) => {
+      res.json(obj)
+    })
+    .catch((err) => {
+      console.error(err.message)
+      res.status(500).send('Server error')
+    })
+})
+
 //deleting TODO: modified
 
 // router.delete('/:id', (req, res) => {
@@ -52,5 +68,10 @@ router.post('/', (req, res) => {
 //updating item text only
 
 //updating completion only
+// router.patch('/:id', (req, res) => {
+//   const postId = req.params.id
+//   const status = req.body.status
+//   db.updateStatus(postId, status)
+// }
 
 module.exports = router
