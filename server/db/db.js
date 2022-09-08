@@ -12,7 +12,7 @@ function getToDoById(db = connection, id) {
 
 //add todo
 function addToDo(item, db = connection) {
-  return db('todo').insert({ item: item, completed: false })
+  return db('todo').insert(item)
 }
 
 //delete todo

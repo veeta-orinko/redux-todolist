@@ -9,7 +9,7 @@ const router = express.Router()
 router.get('/', (req, res) => {
   db.getToDo()
     .then((todos) => {
-      res.json(todos)
+      res.json({ todos })
     })
     .catch((err) => {
       console.log(err)
