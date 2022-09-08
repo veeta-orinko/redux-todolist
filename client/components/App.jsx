@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchFruits } from '../actions'
 
 //// this is the cute emoji stuff ///
-import { cursoreffects } from 'cursor-effects'
-new cursoreffects.fairyDustCursor({ colors: ['#ff0000', '#00ff00', '#0000ff'] })
+// import { cursoreffects } from 'cursor-effects'
+// new cursoreffects.fairyDustCursor({ colors: ['#ff0000', '#00ff00', '#0000ff'] })
 
 function App() {
   const fruits = useSelector((state) => state.fruits)
