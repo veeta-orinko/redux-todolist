@@ -5,6 +5,11 @@ function getToDo(db = connection) {
   return db('todo').select()
 }
 
+//reading one todo from list by id
+function getToDoById(db = connection, id) {
+  return db('todo').select().where('id', id)
+}
+
 //add todo
 function addToDo(item, db = connection) {
   return db('todo').insert({ item: item, completed: false })
@@ -31,4 +36,5 @@ module.exports = {
   updateToDo,
   addToDo,
   getToDo,
+  getToDoById,
 }
