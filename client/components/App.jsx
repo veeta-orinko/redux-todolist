@@ -17,6 +17,9 @@ function App() {
         <ul>
           {fruits.map((fruit) => (
             <li key={fruit}>{fruit}</li>
+            // component: todo list (includes rendering a delete button, linethrough action)
+            // component: adding list (form)
+            // checkbox stored in a state (when checked = true perform an action(update database + checkbox))
           ))}
         </ul>
       </div>
