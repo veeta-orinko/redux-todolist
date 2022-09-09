@@ -1,6 +1,7 @@
-import { addToDo, getToDos } from '../apis/toDo'
+import { addToDo, getToDos, updateToDo } from '../apis/toDo'
 export const SET_TODOS = 'SET_TODOS'
 export const ADD_TODO = 'ADD_TODOS'
+export const UPDATE_TODO = 'UPDATE_TODOS'
 
 export function setTodos(todos) {
   return {
@@ -36,8 +37,23 @@ export function fetchToDo(item) {
   }
 }
 
-//create action hereupdate the completed status action
+export function updateCompletion(id) {
+  return (dispatch) => {
+    return updateToDo(id).then((id) => {
+      dispatch(updateItem(id))
+    })
+  }
+}
+
+export function updateItem(id) {
+  return {
+    type: UPDATE_TODO,
+    payload: id,
+  }
+}
+
+//create action here update the completed status action
 //create the simple state fucntion above
 //create reducer
-//create apiclient funciton
-//dispoatch in list componet
+//create apiclient function
+//dispatch in list componet

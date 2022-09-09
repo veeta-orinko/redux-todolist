@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchToDos } from '../actions'
+import { fetchToDos, updateCompletion } from '../actions'
+
+import { fairyDustCursor } from 'cursor-effects'
+
+new fairyDustCursor()
 
 const ListItem = () => {
   //global variable
@@ -12,9 +16,10 @@ const ListItem = () => {
     dispatch(fetchToDos())
   }, [])
 
-  function onClickHandler() {
+  function onClickHandler(e) {
+    let id = e.target.value
     console.log('button click')
-    //dispatch to change globl state of completed/db update
+    dispatch(updateCompletion(id))
   }
 
   console.log(todos)
@@ -24,16 +29,16 @@ const ListItem = () => {
         <>
           {todo.completed == 1 && (
             <div key={todo.id}>
-              <h3>
-                <s>{todo.item}</s>
-              </h3>
+              <s>{todo.item}</s>
               <button onClick={onClickHandler}>Not Complete</button>
             </div>
           )}
           {todo.completed == 0 && (
             <div key={todo.id}>
-              <h3>{todo.item}</h3>
-              <button onClick={onClickHandler}>Mark Complete</button>
+              {todo.item}
+              <button value={todo.id} onClick={onClickHandler}>
+                Mark Complete
+              </button>
             </div>
           )}
         </>
