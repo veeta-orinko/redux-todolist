@@ -2,6 +2,10 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchToDos } from '../actions'
 
+import { fairyDustCursor } from 'cursor-effects'
+
+new fairyDustCursor()
+
 const ListItem = () => {
   //global variable
   const todos = useSelector((state) => state.todos)

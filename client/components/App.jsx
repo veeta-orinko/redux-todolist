@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
+        <h1>To do list</h1>
         <ListItem />
         <Form />
       </div>
