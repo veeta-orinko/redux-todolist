@@ -1,18 +1,20 @@
 import { getToDos } from '../apis/todos'
 
-export const SET_FRUITS = 'SET_FRUITS'
+export const SET_TODOS = 'SET_TODOS'
 
-export function setFruits(fruits) {
+export function setTodos(todos) {
   return {
-    type: SET_FRUITS,
-    payload: fruits,
+    type: SET_TODOS,
+    payload: todos,
   }
 }
+//from app.jsx: dispatch(fetchToDos())
 
+//What is happening?
 export function fetchToDos() {
   return (dispatch) => {
     return getToDos().then((todos) => {
-      dispatch(setFruits(todos))
+      dispatch(setTodos(todos))
     })
   }
 }
