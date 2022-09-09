@@ -17,3 +17,13 @@ export function addToDo(item) {
     })
     .then((res) => res.body)
 }
+
+//update to do
+export function updateToDo(id) {
+  return request
+    .patch(rootUrl + '/todos')
+    .send({
+      id,
+    })
+    .then((res) => res.body)
+}

@@ -2,11 +2,6 @@ import React from 'react'
 import Form from './Form'
 import ListItem from './ListItem'
 
-// this is the cute emoji stuff ///
-
-// import { cursoreffects } from 'cursor-effects'
-// new cursoreffects.fairyDustCursor({ colors: ['#ff0000', '#00ff00', '#0000ff'] })
-
 function App() {
   return (
     <>

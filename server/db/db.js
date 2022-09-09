@@ -6,12 +6,13 @@ function getToDo(db = connection) {
 }
 
 //reading one todo from list by id
-function getToDoById(db = connection, id) {
-  return db('todo').select().where('id', id)
+function getToDoById(id, db = connection) {
+  return db('todo').select().where('id', id).first()
 }
 
 //add todo
 function addToDo(item, db = connection) {
+  console.log('add')
   return db('todo').insert(item)
 }
 
@@ -21,19 +22,22 @@ function delToDo(id, db = connection) {
 }
 
 //update todo
-function updateToDo(id, text, db = connection) {
-  return db('todo').where('id', id).update({ item: text })
-}
+// function updateToDo(id, text, db = connection) {
+//   return db('todo').where('id', id).update({ item: text })
+// }
 
 //update completion status?
-function updateStatus(id, status, db = connection) {
-  return db('todo').where('id', id).update({ completed: status })
+function updateStatus(obj, db = connection) {
+  console.log('update')
+  console.log(obj)
+  return db('todo')
+    .where('id', obj.id)
+    .update({ completed: obj.completed !== obj.completed })
 }
 
 module.exports = {
   updateStatus,
   delToDo,
-  updateToDo,
   addToDo,
   getToDo,
   getToDoById,

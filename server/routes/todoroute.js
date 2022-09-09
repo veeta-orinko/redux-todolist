@@ -23,7 +23,6 @@ router.post('/', (req, res) => {
   db.addToDo(todoData)
     .then((ids) => {
       const newToDoId = ids[0]
-
       res.json({ ...todoData, id: newToDoId })
     })
 
@@ -33,12 +32,16 @@ router.post('/', (req, res) => {
     })
 })
 
+// todos.find(id => id === todo.id ? completed !== completed)
+
 // updates the to do status
 
-router.patch('/:id', (req, res) => {
-  const formData = req.body
-  const id = req.params
-  db.updateStatus(id, formData.status)
+router.patch('/', (req, res) => {
+  const { id } = req.body
+  db.getToDoById(id)
+    .then((obj) => {
+      return db.updateStatus(obj)
+    })
     .then(() => {
       return db.getToDoById(id)
     })
