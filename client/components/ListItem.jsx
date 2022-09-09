@@ -1,18 +1,45 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchToDos } from '../actions'
 
 const ListItem = () => {
+  //global variable
+  const todos = useSelector((state) => state.todos)
+
+  //fetch the todo list??
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchToDos())
+  }, [])
+
+  function onClickHandler() {
+    console.log('button click')
+    //dispatch to change globl state of completed/db update
+  }
+
+  console.log(todos)
   return (
     <div>
-      <button isCompleted={true / false}>Check Completed</button>
-      <h3>{item}</h3>
-      <button>Delete Item</button>
+      {todos.map((todo) => (
+        <>
+          {todo.completed == 1 && (
+            <div key={todo.id}>
+              <h3>
+                <s>{todo.item}</s>
+              </h3>
+              <button onClick={onClickHandler}>Not Complete</button>
+            </div>
+          )}
+          {todo.completed == 0 && (
+            <div key={todo.id}>
+              <h3>{todo.item}</h3>
+              <button onClick={onClickHandler}>Mark Complete</button>
+            </div>
+          )}
+        </>
+      ))}
     </div>
   )
 }
 
 export default ListItem
-
-// get todo item
-
-// show the item
-// there are buttons around it - delete, check completed button

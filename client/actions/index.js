@@ -1,6 +1,6 @@
 import { addToDo, getToDos } from '../apis/toDo'
 export const SET_TODOS = 'SET_TODOS'
-export const ADD_TODO = 'ADD_TODO'
+export const ADD_TODO = 'ADD_TODOS'
 
 export function setTodos(todos) {
   return {
@@ -13,7 +13,9 @@ export function setTodos(todos) {
 //What is happening?
 export function fetchToDos() {
   return (dispatch) => {
+    ///ask for data from database (by asking apiclient to get it)
     return getToDos().then((todos) => {
+      //call funciton on line 5 to update the global state
       dispatch(setTodos(todos))
     })
   }
@@ -33,3 +35,9 @@ export function fetchToDo(item) {
     })
   }
 }
+
+//create action hereupdate the completed status action
+//create the simple state fucntion above
+//create reducer
+//create apiclient funciton
+//dispoatch in list componet

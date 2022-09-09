@@ -33,6 +33,8 @@ router.post('/', (req, res) => {
     })
 })
 
+// updates the to do status
+
 router.patch('/:id', (req, res) => {
   const formData = req.body
   const id = req.params
